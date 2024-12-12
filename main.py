@@ -34,7 +34,7 @@ if __name__ == "__main__":
     port = int(os.getenv('EXPORTER_PORT', '8000'))
 
     start_http_server(port, addr=host)
-    print(f"Exporter running on {host}:{port}")
+    print(f"Exporter running on port:{port}")
 
     while True:
         collect_metrics()
