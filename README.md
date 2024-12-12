@@ -29,17 +29,21 @@ python main.py
 ## 3. Запросы на PromQL
 ### 3.1 Использование процессоров
 ```
-cpu_usage
 
+cpu_usage
+avg(cpu_usage{instance="127.0.0.1:8000"})
+
+# Пиковая нагрузка за промежуток времени
+max_over_time(cpu_usage{instance=""}[1h])
 ```
 ### 3.2 Памяти всего
 ```
 memory_total
 
 ```
-### 3.3 Используемая память
+### 3.3 Используемая память(вывод в процентах)
 ```
-memory_used
+(memory_used{instance=""} / memory_total{instance=""}) * 100
 
 ```
 ### 3.4 Объем дисков
@@ -49,7 +53,8 @@ disk_total
 ```
 ### 3.5 Используемый объем дисков
 ```
-disk_used
+(disk_used{instance=""} / disk_total{instance=""}) * 100
+
 
 ```
 
